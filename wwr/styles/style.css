@@ -1,17 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap');
+
 #content {
   max-width: 1600px;
   margin: 0 auto;
 }
 
 body {
-  background-color: #CFFCFF;
+  background-color: #fcfbfb;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }
 
 header {
   background-color: #358600;
 }
 
+.home-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+  margin-top: 10px;
+}
+
 nav, a {
+  padding: 35px;
   text-align: center;
   color: #AAEFDF;
   text-decoration: none;
@@ -38,14 +56,38 @@ main section {
   text-align: center;
 }
 
+.rivers-card, .camping-card, .rapids-card {
+  margin: 200px 0;
+}
+
+#logo_link {
+  padding-top: 5px;
+}
+
 .icon, .logo {
   width: 80px;
 }
 
+.icon {
+  padding-top: 10px;
+}
+
 .book, .join {
-  color: #AAEFDF;
-  background-color: #358600;
+  margin-top: 50px;
+  padding: 15px 30px;
+  color: black;
+  background-color: #9EE37D;
   text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.card-img {
+  border: 10px solid #9EE37D;
+}
+
+main section img {
+  box-sizing: border-box;
 }
 
 .book:hover, .join:hover {
@@ -59,11 +101,25 @@ main section {
 }
 
 .msg {
+  font-family: 'Open Sans', sans-serif;
+  padding: 35px;
+  line-height: 1.5em;
   background-color: #358600;
 }
 
+.msg p {
+  font-size: .8em;
+  padding-bottom: 15px;
+}
+
 footer {
+  margin-top: 200px;
+  padding: 25px 50px;
   background-color: #358600;
+}
+
+footer .social img {
+  padding-top: 15px;
 }
 
 footer a {
@@ -79,4 +135,4 @@ footer p a:hover {
   color: black;
   background-color: #CFFCFF;
   text-decoration: none;
-}   
+}
