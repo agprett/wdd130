@@ -15,10 +15,10 @@ Fonts are separated by a | */
   --paragraph-font: "Josefin Sans";
 
   /* these colors below should be chosen from among your palette colors above */
-  --headline-color-on-white: #E94445;  /* headlines on a white background */ 
-  --headline-color-on-color: white; /* headlines on a colored background */ 
-  --paragraph-color-on-white: #E94445; /* paragraph text on a white background */ 
-  --paragraph-color-on-color: white; /* paragraph text on a colored background */ 
+  --headline-color-on-white: #4A2932;  /* headlines on a white background */ 
+  --headline-color-on-color: black; /* headlines on a colored background */ 
+  --paragraph-color-on-white: #4A2932; /* paragraph text on a white background */ 
+  --paragraph-color-on-color: black; /* paragraph text on a colored background */ 
   --paragraph-background-color: #CEC2AE;
   --nav-link-color: #CEC2AE;
   --nav-background-color: #264C5E;
@@ -86,9 +86,11 @@ p {
 }
 .secondary {
   background-color: var(--secondary-color);
+  color: white;
 }
 .accent1 {
   background-color: var(--accent1-color);
+  color: white;
 }
 .accent2{
   background-color: var(--accent2-color);
