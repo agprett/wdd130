@@ -213,6 +213,53 @@ footer p a:hover {
   text-decoration: none;
 }
 
+#faq-page-info-background {
+  height: 300px;
+  width: 100%;
+  background-color: #9EE37D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#faq-page-info {
+  height: 225px;
+  width: 450px;
+  background-color: #358600;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#question-mark {
+  height: 50px;
+  background-color: #358600;
+}
+
+#faq-info-text {
+  margin: 10px 0;
+}
+
+#faq-display {
+  width: 85%;
+  margin: 50px 5%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #358600;
+}
+
+.question {
+  font-weight: 700;
+}
+
+.answer {
+  padding-left: 25px;
+}
+
 @media screen and (max-width: 900px) {
   #hero, .home-grid {
       display: block;
