@@ -260,6 +260,12 @@ footer p a:hover {
   padding-left: 25px;
 }
 
+#form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (max-width: 900px) {
   #hero, .home-grid {
       display: block;
