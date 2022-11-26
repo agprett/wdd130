@@ -4,33 +4,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="styles/styles.css">
   <title>DragonMasters Planning</title>
 </head>
 <body>
   <div class="content">
     <header>
+      <img src="./images/logo.png" alt="logo" class="nav-logo">
       <a href="index.html">
-        <img src="./images/logo.png" alt="logo" class="nav-logo">
         <h3>DragonMasters</h3>
       </a>
       <a href="guide.html">Guide</a>
       <a href="planning.html">Planning</a>
     </header>
 
-    <main>
+    <main id="planning-main">
       <p>Below, the page is separated into two sections. The first is a breakdown of enemies you can have players fight with some additional information for each of them. The second section will display all the enemies and chacters you add to the encounter and can be usefull in tracking whose turn it is, health, and a few other things!</p>
-      <div>
-        <p>In this div I'll have a list of creature available to add, but it requires the javascript to properly display, as well as there is over 100 so without css this will just make the page in incredibly long. Next week when I add in the css and can style this to not blow the page up, I will add in the proper div!</p>
+
+      <div class="monster-selection">
+        <img src="images/arrow.png" alt="arrow" class="collapse">
       </div>
 
-      <div>
-        <div>
-          <img src="images/bandit.png">
+      <div id="tracker-breakdown">
+        <div class="tracker-example">
           <h3>Bandit-1</h3>
-          <p>HP: 25</p>
-          <button>-</button>
-          <input placeholder="1" type="number" min="1">
-          <button>+</button>
+          <p>Health: 25</p>
+          <div class="health-updater-example">
+            <button>-</button>
+            <input placeholder="1" type="number" min="1" class="health-updater-input-example">
+            <button>+</button>
+          </div>
           <input placeholder="Initiative">
           <p>Effects: stunned, prone, poisoned</p>
           <form>
@@ -47,25 +51,84 @@
           </form>
           <button>Remove</button>
         </div>
-        <p>This is a tracker card. On it is useful information during a combat encounter. It has the name, hp, effects and some other useful things fro each creature in the fight. To add or subtract damage, type the amount into the input, then hit the + or - to add or subtract. You can also see status effects. To remove one, click on the effect. To add, use the dropdown and then hit the add effect button. You can click the remove button to delete the tracker for one individual creature. To keep track of turn order, there is an initiavtive input. In the display below, you can fill in the initiative of each creature, then hit the update initiative button. This will go through and assign the turn order for all creatures that have the input filled out and then highlight the tracker for the creature whose turn it is. Use the next button to highlight the next creature in the turn order!</p>
+        <p id="tracker-breakdown-text">On the left is a tracker card. On it is useful information during a combat encounter. It has the name, hp, effects and some other useful things fro each creature in the fight. To add or subtract damage, type the amount into the input, then hit the + or - to add or subtract. You can also see status effects. To remove one, click on the effect. To add, use the dropdown and then hit the add effect button. You can click the remove button to delete the tracker for one individual creature. To keep track of turn order, there is an initiavtive input. In the display below, you can fill in the initiative of each creature, then hit the update initiative button. This will go through and assign the turn order for all creatures that have the input filled out and then highlight the tracker for the creature whose turn it is. Use the next button to highlight the next creature in the turn order!</p>
+        <img src="images/bandit.png" alt="bandit" class="tracker-pic">
       </div>
 
-      <div>
-        <p>Again, here in order to best display this I will need the js and css to not massively increase the size of the page. I have a lot of it worked out, I just don't want to get to far ahead in the design and spread out the work. Below is a form which can be used to add players characters though! It doesn't function as I haven't added the js yet but this week is just getting the html so hopefully that's okay!</p>
-        <form>
-          <input id='new-character-name' placeholder='Characer Name'/>
-          <input id='new-player-name' placeholder='Player Name'/>
-          <input id='new-player-hp' placeholder='Hit Points' type="number" min="1"/>
-          <button>Add</button>
-          <button>Clear</button>
-        </form>
+      <div id="encounter-view">
+        <div id="encounter-monsters" class="encounter-tracker-displays">
+          <p class="tracker-div-title">Monsters:</p>
+          <div class="tracker">
+            <h3>${monster.name}-${i}</h3>
+            <div class="health-updater">
+              <p class="tracker-health">Health: </p>
+              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'minus')">-</button>
+              <input id="${apiMonsterInfo.index}-${i}-hp" class="health-updater-input" value="${apiMonsterInfo.hit_points}" min="0"/>
+              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'plus')">+</button>
+            </div>
+            <p>Initiative:</p>
+            <input id='${apiMonsterInfo.index}-${i}-initiative' class='tracker-initiative'/>
+            <p>Effects: stunned, prone, poisoned</p>
+            <form>
+              <select>
+                <option selected disabled>Select Effect</option>
+                <option>Stunned</option>
+                <option>Prone</option>
+                <option>Bleeding</option>
+                <option>Frozen</option>
+                <option>Poisoned</option>
+                <option>Burned</option>
+              </select>
+              <button>Add effect</button>
+            </form>
+            <button onclick="removeMonster('${apiMonsterInfo.index}-${i}')">Remove</button>
+          </div>
+        </div>
+        
+        <div id="encounter-players" class="encounter-tracker-displays">
+          <p class="tracker-div-title">Players:</p>
+          <div class="tracker">
+            <h3>${monster.name}-${i}</h3>
+            <div class="health-updater">
+              <p class="tracker-health">Health: </p>
+              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'minus')">-</button>
+              <input id="${apiMonsterInfo.index}-${i}-hp" class="health-updater-input" value="${apiMonsterInfo.hit_points}" min="0"/>
+              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'plus')">+</button>
+            </div>
+            <p>Initiative:</p>
+            <input id='${apiMonsterInfo.index}-${i}-initiative' class='tracker-initiative'/>
+            <p>Effects: stunned, prone, poisoned</p>
+            <form>
+              <select>
+                <option selected disabled>Select Effect</option>
+                <option>Stunned</option>
+                <option>Prone</option>
+                <option>Bleeding</option>
+                <option>Frozen</option>
+                <option>Poisoned</option>
+                <option>Burned</option>
+              </select>
+              <button>Add effect</button>
+            </form>
+            <button onclick="removeMonster('${apiMonsterInfo.index}-${i}')">Remove</button>
+          </div>
+          
+          <form id="player-form">
+            <p>Add Player</p>
+            <input id='new-character-name' placeholder='Characer Name'/>
+            <input id='new-player-name' placeholder='Player Name'/>
+            <input id='new-player-hp' placeholder='Hit Points' type="number" min="1"/>
+            <button>Add</button>
+            <button>Clear</button>
+          </form>
+        </div>
       </div>
     </main>
 
     <footer>
       <p>DragonMasters &copy; 2022 - Alec Prettyman</p>
       <div class="social">
-        <a href="site-plan.html">Site Plan</a>
+        <p><a href="site-plan.html">Site Plan</a></p>
         <a href="https://facebook.com" target="_blank">
           <img src="images/facebook.png" alt="fb icon">
         </a>
@@ -76,8 +139,11 @@
           <img src="images/instagram.png" alt="instagram icon">
         </a>
       </div>
-      <img src="images/logo.png">
+      <img src="images/logo.png" alt="footer-logo" class="footer-logo">
     </footer>
   </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/planning.js"></script>
 </body>
 </html>
