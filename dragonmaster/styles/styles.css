@@ -62,6 +62,16 @@ header a:hover {
   background-color: #E94445;
 }
 
+main {
+  padding: 10px 15px;
+}
+
+.pictures {
+  height: 75%;
+  width: 28%;
+  border: solid #4A2932 10px;
+}
+
 .collapse {
   width: 25px;
   position: absolute;
@@ -136,10 +146,6 @@ footer .social p a:hover {
   z-index: 1;
 }
 
-#home-main {
-  padding: 0 15px;
-}
-
 #home-main p {
   margin: 25px 15px;
   text-align: center;
@@ -156,15 +162,64 @@ footer .social p a:hover {
 }
 
 #home-roleplay {
-  height: 75%;
-  width: 28%;
   position: absolute;
   left: -15%;
-  border: solid #4A2932 10px;
 }
 
 #bottom-text {
   padding-left: 13%;
+}
+
+/* guide */
+#guide-main-text {
+  text-align: center;
+  margin: 5px 0 15px;
+}
+
+#guide-roleplaying-div {
+  margin-left: 13%;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #CEC2AE;
+}
+
+#guide-roleplaying-picture {
+  position: absolute;
+  left: -15%;
+}
+
+#guide-roleplaying-text {
+  padding-left: 13%;
+}
+
+#guide-combat-div {
+  margin-right: 13%;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #CEC2AE;
+}
+
+#guide-combat-picture {
+  position: absolute;
+  right: -15%;
+}
+
+#guide-combat-text {
+  padding-right: 13%;
+}
+
+#guide-bottom-text {
+  text-align: center;
+  margin: 15px 0 5px;
+  padding: 0 15px;
 }
 
 /* planning */
