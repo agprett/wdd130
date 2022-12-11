@@ -22,8 +22,16 @@
     <main id="planning-main">
       <p>Below, the page is separated into two sections. The first is a breakdown of enemies you can have players fight with some additional information for each of them. The second section will display all the enemies and chacters you add to the encounter and can be usefull in tracking whose turn it is, health, and a few other things!</p>
 
-      <div class="monster-selection">
-        <img src="images/arrow.png" alt="arrow" class="collapse">
+      <div id="selection-div" class="full-height">
+        <h2 id="selection-title">Creatures</h2>
+        <form name="search-monsters" id="search-monsters">
+          <p>Search By Name:</p>
+          <input placeholder="Search name" id="search-monsters-input"/>
+          <button type="submit">Search</button>
+          <button type="reset">Reset</button>
+        </form>
+        <img src="images/arrow.png" alt="arrow" id="collapse">
+        <div id="monster-selection"></div>
       </div>
 
       <div id="tracker-breakdown">
@@ -58,68 +66,18 @@
       <div id="encounter-view">
         <div id="encounter-monsters" class="encounter-tracker-displays">
           <p class="tracker-div-title">Monsters:</p>
-          <div class="tracker">
-            <h3>${monster.name}-${i}</h3>
-            <div class="health-updater">
-              <p class="tracker-health">Health: 25</p>
-              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'minus')">-</button>
-              <input id="${apiMonsterInfo.index}-${i}-hp" class="health-updater-input" value="1" min="0"/>
-              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'plus')">+</button>
-            </div>
-            <p>Initiative:</p>
-            <input id='${apiMonsterInfo.index}-${i}-initiative' class='tracker-initiative'/>
-            <p>Effects: stunned, prone, poisoned</p>
-            <form>
-              <select>
-                <option selected disabled>Select Effect</option>
-                <option>Stunned</option>
-                <option>Prone</option>
-                <option>Bleeding</option>
-                <option>Frozen</option>
-                <option>Poisoned</option>
-                <option>Burned</option>
-              </select>
-              <button>Add effect</button>
-            </form>
-            <button onclick="removeMonster('${apiMonsterInfo.index}-${i}')">Remove</button>
-          </div>
         </div>
         
         <div id="encounter-players" class="encounter-tracker-displays">
           <p class="tracker-div-title">Players:</p>
-          <div class="tracker">
-            <h3>${monster.name}-${i}</h3>
-            <div class="health-updater">
-              <p class="tracker-health">Health: 25</p>
-              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'minus')">-</button>
-              <input id="${apiMonsterInfo.index}-${i}-hp" class="health-updater-input" value="1" min="0"/>
-              <button onclick="adjustHealth('${apiMonsterInfo.index + '-' + i}', 'plus')">+</button>
-            </div>
-            <p>Initiative:</p>
-            <input id='${apiMonsterInfo.index}-${i}-initiative' class='tracker-initiative'/>
-            <p>Effects: stunned, prone, poisoned</p>
-            <form>
-              <select>
-                <option selected disabled>Select Effect</option>
-                <option>Stunned</option>
-                <option>Prone</option>
-                <option>Bleeding</option>
-                <option>Frozen</option>
-                <option>Poisoned</option>
-                <option>Burned</option>
-              </select>
-              <button>Add effect</button>
-            </form>
-            <button onclick="removeMonster('${apiMonsterInfo.index}-${i}')">Remove</button>
-          </div>
+          
           
           <form id="player-form">
             <p>Add Player</p>
             <input id='new-character-name' placeholder='Characer Name'/>
-            <input id='new-player-name' placeholder='Player Name'/>
             <input id='new-player-hp' placeholder='Hit Points' type="number" min="1"/>
-            <button>Add</button>
-            <button>Clear</button>
+            <button type="submit">Add</button>
+            <button type="reset">Clear</button>
           </form>
         </div>
       </div>
